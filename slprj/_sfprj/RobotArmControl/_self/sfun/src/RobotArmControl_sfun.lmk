@@ -1,0 +1,50 @@
+CC     = "C:\Program Files\MATLAB\R2014a\sys\lcc64\lcc64\bin\lcc64.exe"
+LD     = "C:\Program Files\MATLAB\R2014a\sys\lcc64\lcc64\bin\lcclnk64.exe"
+LIBCMD = "C:\Program Files\MATLAB\R2014a\sys\lcc64\lcc64\bin\lcclib64.exe"
+CFLAGS = -dll -noregistrylookup  -c -Zp8 -DLCC_WIN64 -DMATLAB_MEX_FILE -DMX_COMPAT_32 -nodeclspec 
+LDFLAGS = -s -dll -L"C:\Program Files\MATLAB\R2014a\sys\lcc64\lcc64\lib64" -entry LibMain -map sfun.map 
+LIBFLAGS = 
+
+OBJECTS = \
+	"RobotArmControl_sfun.obj"\
+	"c1_RobotArmControl.obj"\
+	"c2_RobotArmControl.obj"\
+	"c3_RobotArmControl.obj"\
+	"c4_RobotArmControl.obj"\
+	"c5_RobotArmControl.obj"\
+	"RobotArmControl_sfun_registry.obj"\
+	"lccstub.obj"\
+	"RobotArmControl_sfun.def"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\sf_runtime.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libmwblas.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libmx.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libmex.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libmat.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libfixedpoint.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libut.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libmwmathutil.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libemlrt.lib"\
+	"C:\Program Files\MATLAB\R2014a\extern\lib\win64\microsoft\libmwsl_log_load_blocks.lib"\
+	"C:\Program Files\MATLAB\R2014a\lib\win64\libippmwipt.lib"\
+
+INCLUDE_PATH= -I"C:\Program Files\MATLAB\R2014a\sys\lcc64\lcc64\include64"  -I"C:\Program Files\MATLAB\R2014a\extern\include"  -I"C:\Program Files\MATLAB\R2014a\simulink\include"  -I"C:\Program Files\MATLAB\R2014a\stateflow\c\mex\include"  -I"C:\Program Files\MATLAB\R2014a\rtw\c\src"  -I"C:\Users\Guillaume\Documents\UCLouvain\ELME\UniMelb\Robotics and Automation Systems\project\Control_architecture\slprj\_sfprj\RobotArmControl\_self\sfun\src" 
+ 
+
+RobotArmControl_sfun.mexw64 : $(MAKEFILE) $(OBJECTS)
+	$(LD) $(LDFLAGS) -o RobotArmControl_sfun.mexw64 @RobotArmControl_sfun.lmko
+RobotArmControl_sfun.obj :	"RobotArmControl_sfun.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "RobotArmControl_sfun.c"
+c1_RobotArmControl.obj :	"c1_RobotArmControl.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c1_RobotArmControl.c"
+c2_RobotArmControl.obj :	"c2_RobotArmControl.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c2_RobotArmControl.c"
+c3_RobotArmControl.obj :	"c3_RobotArmControl.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c3_RobotArmControl.c"
+c4_RobotArmControl.obj :	"c4_RobotArmControl.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c4_RobotArmControl.c"
+c5_RobotArmControl.obj :	"c5_RobotArmControl.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "c5_RobotArmControl.c"
+RobotArmControl_sfun_registry.obj :	"RobotArmControl_sfun_registry.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "RobotArmControl_sfun_registry.c"
+lccstub.obj :	"C:\Program Files\MATLAB\R2014a\sys\lcc64\lcc64\mex\lccstub.c"
+	$(CC) $(CFLAGS) $(INCLUDE_PATH) "C:\Program Files\MATLAB\R2014a\sys\lcc64\lcc64\mex\lccstub.c"
